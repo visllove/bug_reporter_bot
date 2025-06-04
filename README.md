@@ -8,9 +8,9 @@ Bot for finding known bugs in vector database
 
 | Слой                     | Технология                                   |
 | ------------------------ | -------------------------------------------- |
-| Предварительная загрузка данных | Python + Pinecone API |
+| Загрузка данных о багах  | Python + Pinecone API                        |
 | Интерфейс                | Telegram                                     |
-| Поиск (R из RAG)         | Pinecone Serverless `llama-text-embed-v2`, cosine |
+| Поиск (R из RAG)         | Pinecone Serverless `llama-text-embed-v2`, метрика cosine |
 | Генерация (G из RAG)     | OpenAI `gpt-4o-mini` (опционально)           |
 | Оркестрация              | n8n (cloud/self-host)                        |
 | Логи и метрики           | Google Sheets через Service Account          |
