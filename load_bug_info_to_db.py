@@ -1,5 +1,6 @@
 import os, json, logging, time, dotenv, hashlib
 from pinecone import Pinecone, exceptions
+from pathlib import Path
 
 dotenv.load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -8,6 +9,8 @@ PC_KEY  = os.getenv("PINECONE_API_KEY")
 ENV     = os.getenv("PINECONE_ENV")
 INDEX   = "bugs-index"
 MODEL   = "llama-text-embed-v2"         
+
+bug_file = Path(__file__).resolve().parent / "data" / "bugs.json"
 
 pc = Pinecone(api_key=PC_KEY)
 
@@ -36,7 +39,7 @@ def ascii_id(s: str) -> str:
     """Generate ASCII‑safe id if original contains non‑ASCII"""
     return hashlib.sha1(s.encode()).hexdigest()
 
-def load_bugs(path: str = "bugs.json"):
+def load_bugs(path: str = bug_file):
     bugs = json.load(open(path, encoding="utf-8"))
     out = []
     for b in bugs:

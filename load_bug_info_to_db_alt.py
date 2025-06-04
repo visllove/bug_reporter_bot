@@ -1,5 +1,6 @@
 from pinecone import Pinecone
 import os, json, openai, dotenv
+from pathlib import Path 
 
 dotenv.load_dotenv()
 
@@ -8,7 +9,10 @@ pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 
 idx = pc.Index("bug-index")
 
-bugs = json.load(open("bugs.json", encoding="utf-8"))
+bug_file= Path(__file__).resolve().parent / "data" / "bugs.json"
+
+with bug_file.open(encoding="utf-8") as f:
+    bugs = json.load(f)
 
 def embed(txt):
     return openai.embeddings.create(

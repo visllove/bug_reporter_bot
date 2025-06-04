@@ -1,0 +1,110 @@
+{
+  "name": "bug_reporter_database_error_log",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2ce7e1c4-b767-439d-98e2-9db256e41f41",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1II4qXZGukoIHHfvhz2fPEheIRw3UNJ2YEHfiQ38S2c0",
+          "mode": "list",
+          "cachedResultName": "Bug reports",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1II4qXZGukoIHHfvhz2fPEheIRw3UNJ2YEHfiQ38S2c0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1026289601,
+          "mode": "list",
+          "cachedResultName": "Database errors",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1II4qXZGukoIHHfvhz2fPEheIRw3UNJ2YEHfiQ38S2c0/edit#gid=1026289601"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "error": "Pinecone is unavailable. Please check status on this link: https://status.pinecone.io/",
+            "datetime": "={{ $now }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "error",
+              "displayName": "error",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "datetime",
+              "displayName": "datetime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        220,
+        0
+      ],
+      "id": "126c5e38-fb3a-44bb-80c4-e60b2b1202a6",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleApi": {
+          "id": "WTcFVLvvswZNFFTo",
+          "name": "bug_reporter"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "506eef67-820e-44ec-a5f9-c7a8eb1c5952",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "de3d5a28b6ac9a9509e8fb3fd28452d93d0215d5f9f2a02928cadfc04e2c8760"
+  },
+  "id": "I9IxB9Unw6CkFsMY",
+  "tags": []
+}
