@@ -42,16 +42,16 @@ python load_bug_info_to_db.py       # выполняется один раз д�
 
 2️⃣ Задайте переменные окружения (.env)
 
-# Pinecone
+**Pinecone**
 PINECONE_API_KEY=
 PINECONE_ENV=
 PINECONE_HOST=
 PINECONE_INDEX=
 
-# Telegram
+**Telegram**
 TELEGRAM_BOT_TOKEN=
 
-# Google Sheets (Service Account)
+**Google Sheets (Service Account)**
 GOOGLE_SERVICE_ACCOUNT_JSON=
 
 **OpenAI - опционально, только если нужны отдельные эмбеддинги и ответы, сгенерированные LLM**
